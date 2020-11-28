@@ -110,9 +110,9 @@ void SomfyRemote::buildFrame(uint8_t *frame, uint8_t command)
   frame[1] = command << 4;      // Selected command. The 4 LSB are the checksum
   frame[2] = _rollingCode >> 8; // Rolling code (big endian)
   frame[3] = _rollingCode;      // Rolling code
-  frame[4] = _remoteCode >> 16; // Remote address
+  frame[4] = _remoteCode;       // Remote address
   frame[5] = _remoteCode >> 8;  // Remote address
-  frame[6] = _remoteCode;       // Remote address
+  frame[6] = _remoteCode >> 16; // Remote address
 
   // Checksum calculation (XOR of all nibbles)
   for (uint8_t i = 0; i < 7; i = i + 1)
